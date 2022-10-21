@@ -8,6 +8,7 @@ let bombs = [];
 let score = 0;
 
 
+
 playBtn.addEventListener('click', play);
 
 function play(){
@@ -21,6 +22,7 @@ function play(){
 
   // creo le bombe
   bombs = generateBombs(cellNumbers);
+  console.log(bombs)
 
 }
 
@@ -83,10 +85,8 @@ function handleClickCell(){
 
       endGame(true);
     }
-    // se clicco su id che contiene bomba perdo
-
+  }else{
     endGame(false);
-
   }
 
 }
@@ -154,6 +154,7 @@ function generateBombs(cellNumbers){
 function reset(){
   main.innerHTML = '';
   document.querySelector('.endMessage').innerHTML = '';
+  score = 0;
 }
 
 // creo function per numero random per generare le bombe

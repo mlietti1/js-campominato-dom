@@ -57,11 +57,49 @@ function generateCell(cellId, cellNumbers){
   return cell;
 }
 
+
+// funzione per vedere cosa succede al click
 function handleClickCell(){
   
   // contare tentativi
-  console.log(this.cellid)
-  this.classList.add('clicked'); //css per accendere cella cliccata
+  
+  if(!bomb.includes(this.cellId)){
+    
+    // cella senza bomba si illumina
+    this.classList.add('clicked'); //css per accendere cella cliccata
+    // aumento il punteggio che andrò a restituire alla fine
+    score++;
+
+    // creo collection di celle senza bomba per far finire il gioco se le clicco tutte
+
+    const cells = document.getElementsByClassName('cell')
+
+    // gioco finisce se celle cliccare pari a celle tot meno bombe
+    if(score === cells.length - BOMBS_NUMBER){
+
+      // creare funzione per far finire il gioco e vinco
+
+      endGame(true);
+    }
+    // se clicco su id che contiene bomba perdo
+
+    endGame(false);
+
+  }
+
+}
+
+// funzione che ci dice risultato a gioco finito
+
+function endGame(isWon){
+  // creo messaggio da stampare
+  let msg;
+  const cells = document.getElementsByClassName('cell');
+
+  if(isWon){
+    
+  }
+
 }
 
 function generateBombs(cellNumbers){
@@ -77,6 +115,8 @@ function generateBombs(cellNumbers){
       bombGenerated.push(bomb);
     }
   }
+  // restituisco il numero di bombe generate
+  return bombGenerated;
 }
 
 function reset(){

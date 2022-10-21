@@ -81,9 +81,16 @@ button {
   background-color: #a8dadc;
 }
 
-.endMessage {
-  padding-top: 2rem;
+.bomb {
+  background-color: #e63946;
   color: #f1faee;
+  
+}
+
+.endMessage {
+  margin-top: 2rem;
+  color: #f1faee;
+  display: block;
 }
 
 
@@ -100,5 +107,5 @@ footer {
   height: 30px;
   font-size: 0.7rem;
   padding-right: 1rem;
-  color: #f1faee;
+  color: #a8dadc;
 }

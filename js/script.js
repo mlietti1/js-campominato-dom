@@ -32,7 +32,7 @@ function generatePlayground(cellNumbers){
 
   //genero celle
 
-  for(let i = 0; i < cellNumbers; i++){
+  for(let i = 1; i <= cellNumbers; i++){
     const cell = generateCell(i, cellNumbers);
 
     grid.append(cell);
@@ -50,8 +50,9 @@ function generateCell(cellId, cellNumbers){
 
   //creo proprietà custom per assegnare l'id della cella
   cell.cellId = cellId;
-  cell.innerHTML = `<span>${cellId + 1}</span>`;
+  cell.innerHTML = `<span>${cellId}</span>`;
 
+  // aggiungo event al click per la cella
   cell.addEventListener('click', handleClickCell);
 
   return cell;
@@ -61,9 +62,10 @@ function generateCell(cellId, cellNumbers){
 // funzione per vedere cosa succede al click
 function handleClickCell(){
   
+  console.log(this.cellId)
   // contare tentativi
   
-  if(!bomb.includes(this.cellId)){
+  if(!bombs.includes(this.cellId)){
     
     // cella senza bomba si illumina
     this.classList.add('clicked'); //css per accendere cella cliccata
@@ -72,7 +74,7 @@ function handleClickCell(){
 
     // creo collection di celle senza bomba per far finire il gioco se le clicco tutte
 
-    const cells = document.getElementsByClassName('cell')
+    const cells = document.getElementsByClassName('cell');
 
     // gioco finisce se celle cliccare pari a celle tot meno bombe
     if(score === cells.length - BOMBS_NUMBER){
@@ -97,9 +99,39 @@ function endGame(isWon){
   const cells = document.getElementsByClassName('cell');
 
   if(isWon){
-    
+    msg = `Congrats! You completed the game!`;
+  }else{
+    msg = `Game over. Your score: ${score}/${cells.length - BOMBS_NUMBER}`;
   }
 
+  // stampo il messaggio
+  document.querySelector('.endMessage').innerHTML = msg;
+  
+  // devo crare funzione per far vedere le bombe alla fine
+  showBombs();
+  
+  // rendo il gioco non cliccabile con un elemento sopra
+  const gameOver = document.createElement('div');
+  gameOver.className = 'end-game-level';
+  // lo metto nel dom
+  document.querySelector('.game-wrapper').append(gameOver);
+}
+
+// funzione per vedere le bombe
+
+function showBombs() {
+  // faccio passare in un ciclo tutte le celle e quando trovo id bomba aggiungo la classe bomb
+  const cells = document.getElementsByClassName('cell');
+
+  for(let i = 0; i < cells.length; i++){
+
+    const cell = cells[i];
+
+    // se i è in array bombe agggiungo classe 
+    if(bombs.includes(cell.cellId)){
+      cell.classList.add('bomb');
+    }
+  }
 }
 
 function generateBombs(cellNumbers){

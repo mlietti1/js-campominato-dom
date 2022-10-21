@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #457b9d;
+}
+
+header {
+  background-color: #1d3557;
+  height: 70px;
+  color: #457b9d;
+}
+
+.logo {
+  color: #a8dadc;
+}
+
+main {
+  padding-top: 3rem;
+  min-height: calc(100vh - 100px);
+}
+
+.grid {
+  height: 550px;
+  width: 550px;
+  border: 2px solid #1d3557;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+}
+
+.cell {
+  border: 2px solid #1d3557;
+  padding: 3px;
+  color: #1d3557;
+}
+
+label {
+  font-size: 0.7rem;
+}
+
+select {
+  padding: 5px;
+  line-height: 1.5rem;
+  font-size: 0.7rem;
+  background-color: #a8dadc;
+  border: 3px solid #457b9d;
+  color: #457b9d;
+}
+
+button {
+  font-size: 0.7rem;
+  padding: 3px 7px;
+  border-width: 3px;
+  background-color: #e63946;
+  color: #f1faee;
+  border: 3px solid #f1faee;
+}
+
+.game-wrapper {
+  position: relative;
+}
+
+.square49{
+  width: calc(100% / 7);
+}
+
+.square81{
+  width: calc(100% / 9);
+}
+
+.square100{
+  width: calc(100% / 10);
+}
+
+.clicked {
+  background-color: #a8dadc;
+}
+
+.endMessage {
+  padding-top: 2rem;
+  color: #f1faee;
+}
+
+
+/* per mettere un div trasparente sopra e non far più cliccare */
+.end-game-level {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+footer {
+  height: 30px;
+  font-size: 0.7rem;
+  padding-right: 1rem;
+  color: #f1faee;
+}
